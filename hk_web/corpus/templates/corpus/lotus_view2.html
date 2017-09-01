@@ -1,0 +1,31 @@
+﻿{% extends "lotus_view1.html" %}
+{% load extra %}    
+<!--  Version: $Id: lotus_view2.html 4 2013-12-26 00:28:24Z dev $ -->
+
+{% block content_L2 %}
+   
+    <br><a name=L2> </a> <h3 align="center"> 序號{{ v2.code }} <a href="#L1"><img src="/site_media/uparrow.png"></a></h3>
+    <table width="90%" border="2" align="center">
+    {% for i,title in clist %}
+    {% if v2|return_item:i %}
+    <tr bgcolor="{% cycle '#D2E0F3' '#F0F3D2'%}">
+        <th width="20%"  scope="row"> {{ title }} </th>
+        {% if i == "san" %}
+            <td>{{ v2|return_item:i|sub_url:"/lotus/view/\\1#L2"|safe  }}</td>
+        {% elif i == "d" %}
+            <td>{{ v2|return_item:i }} {% if v2.dnote %} <font color="red"> [注] {{ v2.dnote }} </font> {% endif %} </td>
+        {% elif i == "k" %}
+            <td>{{ v2|return_item:i }} {% if v2.knote %} <font color="red"> [注] {{ v2.knote }} </font> {% endif %} </td>
+        {% else %}
+            <td>{{ v2|return_item:i  }}</td>
+        {% endif %}
+        
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+    
+    {% block content_L3 %}
+    {% endblock %}
+   
+{% endblock %}

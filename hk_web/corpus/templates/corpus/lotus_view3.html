@@ -1,0 +1,57 @@
+﻿{% extends "lotus_view2.html" %}
+{% load extra %}    
+<!--  Version: $Id: lotus_view3.html 4 2013-12-26 00:28:24Z dev $ -->
+
+{% block content_L3 %}
+   
+    <br><a name=L3> </a> <h3 align="center"> 序號{{ v3.code }} <a href="#L2"><img src="/site_media/uparrow.png"></a> </h3> 
+    <table width="90%" border="2" align="center">
+    {% for i,title in clist %}
+    {% if v3|return_item:i %}
+    <tr bgcolor="{% cycle '#D2E0F3' '#F0F3D2'%}">
+        <th width="20%"  scope="row"> {{ title }} </th>
+        {% if i == "san" %}
+            <td>{{ v3|return_item:i|sub_url:"/lotus/view/\\1#L3"|safe  }}</td>
+         {% elif i == "d" %}
+            <td>{{ v3|return_item:i }} {% if v3.dnote %} <font color="red"> [注] {{ v3.dnote }} </font> {% endif %} </td>
+        {% elif i == "k" %}
+            <td>{{ v3|return_item:i }} {% if v3.knote %} <font color="red"> [注] {{ v3.knote }} </font> {% endif %} </td>
+        {% else %}
+            <td>{{ v3|return_item:i  }}</td>
+        {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+    
+    {% if v4 %}
+    <br>
+    <table width="90%" border="2" align="center">
+      {% for field in v4 %} 
+      <tr bgcolor="{% cycle '#D2E0F3' '#F0F3D2'%}">
+        {% ifequal field.level 4 %}
+            <th width="20%" scope="row">●</th>
+        {% else %}
+            <th width="20%" scope="row"></th>
+        {% endifequal %}    
+        
+        <td style="padding:0px 0px 0px {{ field.level|sub:4|mul:50 }}px;">
+        {{ field.san }} &#8680; {{ field.san2 }} {{ field.santag }} {{ field.dir }} 
+        {{ field.note }} 
+        {% if field.d %}  <span style="color:blue"> 護譯：</span>  {{ field.d }} 
+            {% if field.dnote %} <font color="red"> [注] {{ field.dnote }} </font> {% endif %} 
+        {% endif %}
+        {% if field.k %}  <span style="color:blue"> 什譯：</span>  {{ field.k }} 
+            {% if field.knote %} <font color="red"> [注] {{ field.knote }} </font> {% endif %} 
+        {% endif %}
+        </td>
+        
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    
+    {% block content_L4 %}
+    {% endblock %}
+   
+{% endblock %}

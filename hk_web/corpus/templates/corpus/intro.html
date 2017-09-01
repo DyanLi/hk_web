@@ -1,0 +1,51 @@
+﻿{% extends "corpus/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>介紹</h1>
+
+<p>
+“漢譯佛經梵漢對比分析語料庫”(A Database of Chinese Buddhist translation and their Sanskrit parallels for the Buddhist Chinese Studies)是專門為佛教漢語研究者設計的研究工具，包括兩個方面的內容：第一、漢譯佛經與現存平行梵語佛典的文本（段落）對照，第二、漢譯詞語之平行梵語成分的語法和語義描寫和分析。建立語料庫的目的在於方便佛教漢語的研究者了解譯文與平行梵語之間可能存在的對應關係。語料庫目前收入的資料有《法華經》《維摩詰經》和《俱舍論》。
+<p>
+2010年，香港教育學院朱慶之教授與臺灣中央大學萬金川教授、北京大學段晴教授合作設計了題為“漢譯佛經梵漢對比分析語料庫建設及其漢語歷史語言學研究”（Assessing the impact of Sanskrit on the Chinese language: Creating a database of Chinese Buddhist translations and their Sanskrit parallels to facilitate research in historical Chinese linguistics through contrastive analysis）的研究計劃，並得到
+<a href="http://www.ugc.edu.hk/big5/rgc/index.htm">
+香港特別行政區政府研資局（RGC）GRF</a>的支持
+（項目編號為HKIEd844710）。
+<p>
+這項研究計劃具體參與語料庫的設計和製作工作的主要有王繼紅博士（北京外國語大學）、姜南博士（中國社會科學院梵語研究中心）、劉震博士（復旦大學）、范慕尤博士（上海交通大學）、趙淑華博士（臺灣中央大學）、皇甫偉博士（北京科技大學）和邱冰博士（北京語言大學）。其中，王繼紅、姜南和范慕尤分別負責《俱舍論》、《法華經》和《維摩詰經》的梵漢對比；趙淑華和劉震負責對初稿進行校訂，其中趙淑華重點校訂了《法華經》第一、第四品和《維摩詰經》第一、第二品，劉震校訂了《法華經》的其餘部分；語料庫的軟件開發則由皇甫偉和邱冰負責。
+<p>
+這個語料庫僅僅是一個嘗試，一個開端。由於受到知識和能力的限制，語料庫還存在諸多不足，尤其是對語料的分析，錯誤一定不少，對此我們深感遺憾和抱歉。若使用者能夠不吝賜教，將發現的問題隨時擲下，以便定期修訂，我們將非常感激。
+
+<p>
+
+<table width="750" align="center">
+  <tr>
+    <td valign="bottom">
+    <a href="http://www.ied.edu.hk">
+    <img src={% static 'corpus/images/hkied-logo.jpg' %} width="163" height="57" alt="HKIED">
+    </a>
+    <td>&nbsp;</td>
+    </td>
+    <td valign="bottom">
+    <a href="http://fhm.web.ied.edu.hk/en/index.php">
+    <img src={% static 'corpus/images/logo_fhm.png' %}  alt="HKIED FHM">
+    </a>
+    </td>
+    <td>&nbsp;</td>
+    <td valign="bottom">
+    <a href="https://www.ied.edu.hk/chl/">
+    <img src={% static 'corpus/images/chl_logo.png' %}  alt="中國語言學系">
+    </a>
+    </td> 
+    <td>&nbsp;</td>
+    <td valign="bottom">
+    <a href="http://www.ugc.edu.hk/big5/rgc/index.htm">
+    <img src={% static 'corpus/images/ugc_logo.jpg' %}  alt="香港特別行政區政府研資局">
+    </a>
+    </td>    
+    
+  </tr>
+</table>
+
+{% endblock %}

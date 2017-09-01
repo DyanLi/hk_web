@@ -1,0 +1,27 @@
+﻿{% extends "corpus/base.html" %}
+
+{% block content %}
+    
+    
+    <hr>
+
+    <h1> 《法華經》語料目錄 </h1>
+    
+    <table width="90%" border="2" align="center">
+      <tr>
+      {% for i in items %}
+        <td>
+          <a href="/c/lotus/view/{{i.code}}"> {{ i.code }}  </a>
+        </td>
+        {% if forloop.last %}
+           </tr>
+        {% else %}
+          {% if forloop.counter|divisibleby:"5" %}
+             </tr><tr>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </table>
+    
+    
+{% endblock %}

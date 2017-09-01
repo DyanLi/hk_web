@@ -1,0 +1,79 @@
+﻿{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href='{% static "corpus/base.css" %}'>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% block metacontent %}{% endblock %}
+    <link rel="icon" href={% static "corpus/images/favicon.ico" %}>
+    <title>梵漢對勘雙語語料庫</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header" style="background: #065279; display:block;">
+    <img src={% static "corpus/images/banner.jpg" %} alt="語料庫徽标" name="corpuslogo"  height="95" />
+  </div>
+  
+  <div class="sidebar">
+    <ul class="nav">
+      <li><a href="{% url 'intro' %}"> 介紹 </a> </li>
+      <li><a href="{% url 'abbreviation' %}"> 縮略語表 </a></li>
+      <li><a href="{% url 'lotus_index' %}">法華經</a></li>
+      <li><a href="/vimala/home">維摩詰經</a></li>
+      <li><a href="/abhi/home">俱舍論</a></li>
+      <li><a href="{% url 'download' %}">相關下載</a></li> 
+      <li><a href="{% url 'contact' %}">聯繫我們</a></li>
+      <li><a href="{% url 'history' %}">版本修訂歷史</a></li>
+    </ul>
+  </div>
+  
+  <div class="content">
+  {% block content %}
+  {% endblock %}
+  
+  <p> </p>
+  </div><!-- end .content -->
+
+
+    <form class="form-horizontal">
+    <div class="form-group">
+        <label for="inputEmail" class="col-sm-2 control-label">郵箱</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail" placeholder="請輸入您的額郵箱">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputText" class="col-sm-2 control-label">意見欄</label>
+
+        <div class="col-sm-10" >
+            <textarea class="form-control" rows="3" id="inputText" placeholder="請留下您的意見，讓我們加以改進~"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">提交</button>
+    </div>
+    </div>
+    </form>
+  <!-- end .send advice -->
+
+    <hr>
+    <footer>
+        <div class="small-print align-right">
+            Copyright &copy; 香港教育學院 2017 <br> 漢譯佛經梵漢對比分析語料庫 <br> A Database of Chinese Buddhist translation and their Sanskrit parallels for the Buddhist Chinese Studies <br>
+        </div>
+
+    </footer>
+    <!-- end .footer -->
+  
+</div><!-- end .container -->
+</body>
+</html>

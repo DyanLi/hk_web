@@ -1,0 +1,64 @@
+﻿{% extends "corpus/base.html" %}
+
+
+
+{% block content %}
+{% load extra %}    
+    
+    <!--  Version: $Id: lotus_view1.html 10 2014-07-05 07:39:58Z dev $ -->
+    <hr>
+
+    <h1> 《法華經》對勘材料 </h1>
+    <table align="center" border="0" width="90%" background="/static/corpus/images/bg.png">
+    <tr>
+    <td><a href="/c/lotus/go?to=first&level={{ level }}"><img src="/static/corpus/images/first.png"></a></td>
+    <td><a href="/c/lotus/go?to=prev&base={{ code }}"> <img src="/static/corpus/images/lt.png"></a> </td>
+    <td width="25%" align="center"> <font color="white"> 第{{ current }}頁 / 共{{ totalpage }}頁  </font> </td>
+    <td><a href="/c/lotus/go?to=next&base={{ code }}"> <img src="/static/corpus/images/rt.png"> </a> </td>
+    <td><a href="/c/lotus/go?to=last&level={{ level }}"> <img src="/static/corpus/images/last.png"> </a> </td>
+    <td width="50%">     </td>
+    </tr>
+    </table>
+    
+    
+    <hr>
+    <a name=L1> </a> <h3 align="center"> 序號{{ v1.code }}</h3>
+    <table width="90%" border="2" align="center">
+    {% for i,title in clist %}
+    {% if v1|return_item:i %}
+    <tr bgcolor="{% cycle '#D2E0F3' '#F0F3D2'%}">
+        <th width="20%"  scope="row"> {{ title }} </th>
+        {% if i == "san" %}
+            <td>{{ v1|return_item:i|sub_url:"/lotus/view/\\1#L1"|safe  }}</td>
+        {% elif i == "d" %}
+            <td>{{ v1|return_item:i }} {% if v1.dnote %} <font color="red"> [注] {{ v1.dnote }} </font> {% endif %} </td>
+        {% elif i == "k" %}
+            <td>{{ v1|return_item:i }} {% if v1.knote %} <font color="red"> [注] {{ v1.knote }} </font> {% endif %} </td>
+        {% else %}
+            <td>{{ v1|return_item:i  }}</td>
+        {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+    
+    
+    {% for c in children %}
+    <a href="/c/lotus/view/{{c.0}}"> {{c.1}} </a> <br>
+    {% endfor %}
+    <br>
+    
+    <a name=bottom> </a>
+    <table align="center" border="0" width="90%" background="/static/corpus/images/bg.png">
+    <tr>
+    <td><a href="/c/lotus/go?to=first&level={{ level }}&bottom=1"><img src="/static/corpus/images/first.png"></a></td>
+    <td><a href="/c/lotus/go?to=prev&base={{ code }}&bottom=1"> <img src="/static/corpus/images/lt.png"></a> </td>
+    <td width="25%" align="center"> <font color="white"> 第{{ current }}頁 / 共{{ totalpage }}頁  </font> </td>
+    <td><a href="/c/lotus/go?to=up&base={{ code }}"> <img src="/static/corpus/images/up.png"></a> </td>
+    <td><a href="/c/lotus/go?to=next&base={{ code }}&bottom=1"> <img src="/static/corpus/images/rt.png"> </a> </td>
+    <td><a href="/c/lotus/go?to=last&level={{ level }}&bottom=1"> <img src="/static/corpus/images/last.png"> </a> </td>
+    <td width="50%">     </td>
+    </tr>
+    </table>
+    
+{% endblock %}
